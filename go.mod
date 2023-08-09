@@ -1,4 +1,4 @@
-module github.com/cybozu/neco-containers/golang/analyzer
+module github.com/cybozu-go/golang-custom-analyzer
 
 go 1.19
 
