@@ -1,4 +1,4 @@
-[![GitHub release](https://img.shields.io/github/release/cybozu-go/golang-custom-analyzer.svg?maxAge=60)][releases]
+[![GitHub release](https://img.shields.io/github/release/cybozu-go/golang-custom-analyzer.svg?maxAge=60)][https://github.com/cybozu-go/golang-custom-analyzer/releases]
 [![CI](https://github.com/cybozu-go/golang-custom-analyzer/actions/workflows/ci.yaml/badge.svg)](https://github.com/cybozu-go/golang-custom-analyzer/actions/workflows/ci.yaml)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/cybozu-go/golang-custom-analyzer?tab=overview)](https://pkg.go.dev/github.com/cybozu-go/golang-custom-analyzer?tab=overview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cybozu-go/golang-custom-analyzer)](https://goreportcard.com/report/github.com/cybozu-go/golang-custom-analyzer)

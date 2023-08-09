@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cybozu/neco-containers/golang/analyzer/pkg/eventuallycheck"
+	"github.com/cybozu-go/golang-custom-analyzer/pkg/eventuallycheck"
 	"golang.org/x/tools/go/analysis/singlechecker"
 )
 
