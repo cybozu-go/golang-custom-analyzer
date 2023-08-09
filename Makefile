@@ -1,45 +1,35 @@
-BIN_DIR := $(shell pwd)/bin
+TARGET = custom-checker eventuallycheck restrictpkg
 
-# Tool versions
-MDBOOK_VERSION = 0.4.27
-MDBOOK := $(BIN_DIR)/mdbook
-
-# Test tools
-STATICCHECK = $(BIN_DIR)/staticcheck
+SUDO = sudo
+SUDO_GO = $(SUDO) $(shell which go)
 
 .PHONY: all
-all: test
+all: check-generate test build
 
-.PHONY: book
-book: $(MDBOOK)
-	rm -rf docs/book
-	cd docs; $(MDBOOK) build
+.PHONY: setup
+setup:
+	go get -u golang.org/x/tools/cmd/goimports
+	go get -u golang.org/x/lint/golint
+	go install honnef.co/go/tools/cmd/staticcheck@latest
 
+.PHONY: check-generate
+check-generate:
+	go mod tidy
+	git diff --exit-code --name-only
+
+.PHONY: build
+build: $(TARGET)
+
+$(TARGET):
+	CGO_ENABLED=0 go build ./cmd/$@
+
+.PHONY: clean
+clean:
+	-rm $(TARGET)
 
 .PHONY: test
 test:
-	if find . -name go.mod | grep -q go.mod; then \
-		$(MAKE) test-go; \
-	fi
-
-.PHONY: test-go
-test-go: test-tools
-	test -z "$$(gofmt -s -l . | tee /dev/stderr)"
-	$(STATICCHECK) ./...
-	go install ./...
-	go test -race -v ./...
+	test -z "$$(gofmt -s -l . | grep -v '^vendor' | tee /dev/stderr)"
+	staticcheck ./...
 	go vet ./...
-
-
-##@ Tools
-
-$(MDBOOK):
-	mkdir -p bin
-	curl -fsL https://github.com/rust-lang/mdBook/releases/download/v$(MDBOOK_VERSION)/mdbook-v$(MDBOOK_VERSION)-x86_64-unknown-linux-gnu.tar.gz | tar -C bin -xzf -
-
-.PHONY: test-tools
-test-tools: $(STATICCHECK)
-
-$(STATICCHECK):
-	mkdir -p $(BIN_DIR)
-	GOBIN=$(BIN_DIR) go install honnef.co/go/tools/cmd/staticcheck@latest
+	$(SUDO_GO) test -race -v ./...
