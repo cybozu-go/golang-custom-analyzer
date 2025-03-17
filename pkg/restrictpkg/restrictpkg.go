@@ -47,7 +47,7 @@ func run(pass *analysis.Pass) (interface{}, error) {
 			}
 			for _, p := range packages {
 				if n.Path.Value == fmt.Sprintf(`"%s"`, p) {
-					pass.Reportf(n.Pos(), fmt.Sprintf("%s package must not be imported", p))
+					pass.Reportf(n.Pos(), "%s package must not be imported", p)
 				}
 			}
 		}
