@@ -3,22 +3,21 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/cybozu-go/golang-custom-analyzer?tab=overview)](https://pkg.go.dev/github.com/cybozu-go/golang-custom-analyzer?tab=overview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cybozu-go/golang-custom-analyzer)](https://goreportcard.com/report/github.com/cybozu-go/golang-custom-analyzer)
 
-golang custom analyzer
-======================
+# golang custom analyzer
 
-This repository contains custom analysers for Go.
+This repository contains custom analyzers for Go.
 
 ## custom-checker
 
-`custom-checker` is the program to run the following analysers at once:
+`custom-checker` is the program to run the following analyzers at once:
 
 - `eventuallycheck`
 - `restrictpkg`
 
 ### Usage
 
-```console
-$ custom-checker -restrictpkg.packages=html/template,log targetfile.go
+```sh
+custom-checker -restrictpkg.packages=html/template,log targetfile.go
 ```
 
 ## `eventuallycheck`
@@ -27,8 +26,8 @@ $ custom-checker -restrictpkg.packages=html/template,log targetfile.go
 
 ### Usage
 
-```console
-$ eventuallycheck [FILES]
+```sh
+eventuallycheck [FILES]
 ```
 
 ### Target functions
@@ -46,6 +45,6 @@ $ eventuallycheck [FILES]
 
 Let `PACKAGE1` and `PACKAGE2` be the names of the packages you want to restrict.
 
-```console
-$ restrictpkg -packages PACKAGE1,PACKAGE2,...
+```sh
+restrictpkg -packages PACKAGE1,PACKAGE2,...
 ```
