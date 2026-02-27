@@ -17,10 +17,13 @@ Follow [semantic versioning 2.0.0][semver] to choose the new version number.
 1. Cut a new release branch from `main` branch.
 
     ```sh
+    # Fetch the latest changes from main branch.
+    git fetch origin main
+
     # Set VERSION and confirm it. It should NOT have "v" prefix.
     # The "v" prefix will be added automatically in the release tag.
     VERSION=x.y.z
-    git checkout -b release-v$VERSION main
+    git switch -c release-v$VERSION origin/main
     ```
 
 2. Update the version in `VERSION` file.
