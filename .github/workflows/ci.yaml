@@ -31,7 +31,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         VERSION=$(cat VERSION | tr -d '[:space:]')
-        if git show-ref --tags | grep -q -w -F "refs/tags/${VERSION}"; then
+        if git show-ref --verify -q "refs/tags/${VERSION}"; then
           echo "$VERSION already exists. Skipping release."
           exit 0
         fi
