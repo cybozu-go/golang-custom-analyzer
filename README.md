@@ -48,3 +48,21 @@ Let `PACKAGE1` and `PACKAGE2` be the names of the packages you want to restrict.
 ```sh
 restrictpkg -packages PACKAGE1,PACKAGE2,...
 ```
+
+## Upgrade procedure
+
+### Dev tools
+
+Update the versions of dev tools in `aqua.yaml`, then run `aqua upc --prune` to update the lock file.
+
+### GitHub Actions
+
+
+Use [pinact](https://github.com/suzuki-shunsuke/pinact) to pin GitHub Actions to specific versions and update them.
+
+> [!IMPORTANT]
+> Specify `PINACT_MIN_AGE=14` to ensure that only actions that have been released for more than 14 days are updated.
+
+```sh
+PINACT_GITHUB_TOKEN=$(gh auth token) PINACT_MIN_AGE=14 pinact run -u
+```
