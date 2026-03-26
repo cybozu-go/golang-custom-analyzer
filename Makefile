@@ -8,9 +8,7 @@ all: check-generate test build
 
 .PHONY: setup
 setup:
-	go get -u golang.org/x/tools/cmd/goimports
-	go get -u golang.org/x/lint/golint
-	go install honnef.co/go/tools/cmd/staticcheck@latest
+	aqua i -l
 
 .PHONY: check-generate
 check-generate:
