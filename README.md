@@ -3,6 +3,12 @@
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/cybozu-go/golang-custom-analyzer?tab=overview)](https://pkg.go.dev/github.com/cybozu-go/golang-custom-analyzer?tab=overview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/cybozu-go/golang-custom-analyzer)](https://goreportcard.com/report/github.com/cybozu-go/golang-custom-analyzer)
 
+
+> [!IMPORTANT]
+> This repository has been archived and is no longer maintained.
+> Please use [golangci-lint](https://golangci-lint.run/) instead.
+
+
 # golang custom analyzer
 
 This repository contains custom analyzers for Go.
